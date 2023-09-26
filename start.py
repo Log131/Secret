@@ -22,7 +22,6 @@ import random
 
 
 
-
 bot = Bot(token='6573671049:AAEEjlb_kT9prPzOB35cGvl1dXo_JkRO_Vo')
 dp = Dispatcher(bot=bot, storage=MemoryStorage())
 
@@ -45,7 +44,6 @@ async def state_starts(msg: types.Message):
 
 
     
-
 
 
 
@@ -148,7 +146,7 @@ async def tudity_5(msg: types.Message, state: FSMContext):
     try:
         await msg.answer('Генерируется подождите')
         await state.finish()
-        await msg.answer_photo(photo=await softstexts(promts=msg.text,safety='no',scale=scales[0]))
+        await msg.answer_photo(photo=await softstexts(promts=msg.text,safety='no',scale=scales[0], useri=msg.from_user.id))
         await state_nudify_(useri=msg.from_user.id)
     except Exception as e:
         print(e)
@@ -210,14 +208,14 @@ async def rands_states(msg: types.Message, state: FSMContext):
             inits = f'https://api.telegram.org/file/bot{t}/{s.file_path}'
             await msg.answer('Генерируется подождите')
             await state.finish()
-            await msg.answer_photo(photo=await softs_5(init=inits, promts=data['promts_555'], scale=scales[0],safety='no'))
+            await msg.answer_photo(photo=await softs_5(init=inits, promts=data['promts_555'], scale=scales[0],safety='no',useri=msg.from_user.id))
             await state_nudify_(useri=msg.from_user.id)
         except Exception as e:
             print(e)
 
             await state.finish()
 
-            await msg.answer('Чтото пошло не так')
+            await msg.answer('Ваш запрос в ожидании пожалуйста подождите')
 
 
 @dp.callback_query_handler(text='canselthis', state=[nudes_pic_states.promts_555,nudes_pic_states.promts])
@@ -284,7 +282,7 @@ async def state_picture_5(msg: types.Message, state: FSMContext):
             
             
             await state.finish()
-            await msg.answer_photo(photo=await softstexts(promts=msg.text,safety=safetys[0], scale=scales[0]))
+            await msg.answer_photo(photo=await softstexts(promts=msg.text,safety=safetys[0], scale=scales[0], useri=msg.from_user.id))
             await msg.answer('Еще сгенерировать?', reply_markup=wel_5())
             if s_[0] != 0:
                 await state_tryttttt(userid=msg.from_user.id)
@@ -413,7 +411,7 @@ async def state_get_5(msg: types.Message, state: FSMContext):
         
                 await state.finish()
                 
-                await msg.answer_photo(await softs_5(init=inits, promts=data['promts_'], scale=scales[0], safety=s_5[0]))
+                await msg.answer_photo(await softs_5(init=inits, promts=data['promts_'], scale=scales[0], safety=s_5[0],useri=msg.from_user.id))
                 await msg.answer('Еще сгенерировать?', reply_markup=wel_5())
                 
                 
@@ -437,7 +435,7 @@ async def state_get_5(msg: types.Message, state: FSMContext):
         
             await state.finish()
         
-            await msg.answer('чтото пошло не так')
+            await msg.answer('Ваш запрос в ожидании пожалуйста подождите')
 
 
 @dp.message_handler(text='Профиль 🆔')
@@ -818,6 +816,11 @@ async def state_balances(css: types.CallbackQuery):
             s = await f_.fetchone()
 
     await css.message.answer(f'Профит - {s[0]}, \n Пользователей - {r[0]}')
+
+
+
+
+
 
 
 if __name__ == '__main__':

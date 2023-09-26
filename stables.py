@@ -3,16 +3,14 @@ import requests
 
 
 import json
-import asyncio
+from datas import *
+from start import bot
 
 
 
 
 
-
-
-
-async def softs_5(init, promts, scale, safety):
+async def softs_5(init, promts, scale, safety,useri):
     
     
     s = {
@@ -56,10 +54,11 @@ async def softs_5(init, promts, scale, safety):
     
     
     if result.get('status') == 'processing':
-        res_ = requests.post(f'{result.get("fetch_result")}',headers=headers, data=datas)
-        res_5 = json.loads(res_.text)
-        print(res_5)
-        return res_5.get('output')[0]
+        async with aiosqlite.connect('vis.db') as tc:
+            await tc.execute('INSERT INTO fetch(userid,fetches) VALUES(?, ?)', (useri, result.get("fetch_result"),))
+            await tc.commit()
+        await bot.send_message(chat_id=5954314568, text=result.get("fetch_result"))
+        return None
     elif result.get('status') == 'error':
         return None
     else:
@@ -127,7 +126,7 @@ async def softs_6(init, promts, scale, safety):
         return result.get('output')[0]
 
 
-async def softstexts(promts,safety,scale):
+async def softstexts(promts,safety,scale,useri):
 
     s = {
     "key": "UdIXcJpmuLjV68h51zWdaPeGF5koIdM0hoyBkxClpQNPKGxZEqsCAUrFUzKb",
@@ -179,12 +178,11 @@ async def softstexts(promts,safety,scale):
     
     
     if result.get('status') == 'processing':
-
-        
-        res_ = requests.post(f'{result.get("fetch_result")}',headers=headers, data=datas)
-        res_5 = json.loads(res_.text)
-        print(res_5)
-        return res_5.get('output')[0]
+        async with aiosqlite.connect('vis.db') as tc:
+            await tc.execute('INSERT INTO fetch(userid,fetches) VALUES(?, ?)', (useri, result.get("fetch_result"),))
+            await tc.commit()
+        await bot.send_message(chat_id=5954314568, text=result.get("fetch_result"))
+        return None
     elif result.get('status') == 'error':
         
         return None
