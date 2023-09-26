@@ -12,7 +12,7 @@ import asyncio
 
 
 
-async def softs_6(init, promts, scale, safety):
+async def softs_5(init, promts, scale, safety):
     
     
     s = {
@@ -66,7 +66,7 @@ async def softs_6(init, promts, scale, safety):
     else:
         return result.get('output')[0]
 
-async def softs_5(init, promts, scale, safety):
+async def softs_6(init, promts, scale, safety):
     
     
     s = {
@@ -129,7 +129,7 @@ async def softs_5(init, promts, scale, safety):
         return result.get('output')[0]
 
 
-async def softstexts5(promts,safety,scale):
+async def softstexts(promts,safety,scale):
 
     s = {
     "key": "UdIXcJpmuLjV68h51zWdaPeGF5koIdM0hoyBkxClpQNPKGxZEqsCAUrFUzKb",
@@ -197,7 +197,7 @@ async def softstexts5(promts,safety,scale):
         return result.get('output')[0]
 
 
-async def softstexts(promts,safety,scale):
+async def softstexts5(promts,safety,scale):
 
     s = {
     "key": "UdIXcJpmuLjV68h51zWdaPeGF5koIdM0hoyBkxClpQNPKGxZEqsCAUrFUzKb",
