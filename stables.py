@@ -56,7 +56,7 @@ async def softs_5(init, promts, scale, safety):
     
     
     if result.get('status') == 'processing':
-        asyncio.sleep(18)
+        await asyncio.sleep(18)
         res_ = requests.post(f'{result.get("fetch_result")[0]}',headers=headers, data=datas)
         res_5 = json.loads(res_.text)
         print(res_5)
@@ -118,7 +118,7 @@ async def softs_6(init, promts, scale, safety):
     
     
     if result.get('status') == 'processing':
-        asyncio.sleep(18)
+        await asyncio.sleep(18)
         res_ = requests.post(f'{result.get("fetch_result")[0]}',headers=headers, data=datas)
         res_5 = json.loads(res_.text)
         print(res_5)
@@ -182,7 +182,7 @@ async def softstexts(promts,safety,scale):
     
     if result.get('status') == 'processing':
 
-        asyncio.sleep(18)
+        await asyncio.sleep(18)
         res_ = requests.post(f'{result.get("fetch_result")[0]}',headers=headers, data=datas)
         res_5 = json.loads(res_.text)
         print(res_5)
@@ -197,7 +197,7 @@ async def softstexts(promts,safety,scale):
         return result.get('output')[0]
 
 
-async def softstexts5(promts,safety,scale):
+async def softstexts6(promts,safety,scale):
 
     s = {
     "key": "UdIXcJpmuLjV68h51zWdaPeGF5koIdM0hoyBkxClpQNPKGxZEqsCAUrFUzKb",
