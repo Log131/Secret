@@ -3,7 +3,7 @@ import requests
 
 
 import json
-import time
+import asyncio
 
 
 
@@ -56,7 +56,7 @@ async def softs_5(init, promts, scale, safety):
     
     
     if result.get('status') == 'processing':
-        time.sleep(18)
+        asyncio.sleep(18)
         res_ = requests.post(f'{result.get("fetch_result")}',headers=headers, data=datas)
         res_5 = json.loads(res_.text)
         print(res_5)
@@ -121,7 +121,7 @@ async def softstexts(promts,safety,scale):
     
     
     if result.get('status') == 'processing':
-        time.sleep(18)
+        asyncio.sleep(18)
         res_ = requests.post(f'{result.get("fetch_result")}',headers=headers, data=datas)
         res_5 = json.loads(res_.text)
         print(res_5)
